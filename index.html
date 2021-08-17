@@ -6,11 +6,25 @@
     <title>PWA</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
     <link rel="manifest" href="manifest.json">
+    <script>
+      if ("serviceWorker" in navigator) {
+            if (navigator.serviceWorker.controller) {
+                console.log("[Aplicativo] ativo encontrado, não há necessidade de registrar");
+            } else {
+                navigator.serviceWorker
+                    .register("./sw.js", {
+                        scope: "./"
+                    })
+                    .then(function(reg) {
+                        console.log("[Aplicativo] O trabalhador do serviço foi registrado para o escopo: " + reg.scope);
+                    });
+            }
+        }
+    </script>
   </head>
   <body>
     <h1> Carregado </h1>
    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem velit deleniti reprehenderit error distinctio nobis alias nesciunt nisi debitis inventore est, exercitationem aliquid eum voluptate. Dolore ipsa hic ex doloremque?
    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam tenetur similique vitae quis ipsum aliquam consequatur iusto omnis, ducimus nulla officia quas quidem iure ipsa dolore ut perspiciatis? Tenetur, illo?
-    <script src="script.js"></script>
   </body>
 </html>
